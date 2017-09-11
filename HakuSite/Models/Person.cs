@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.Entity;
+using System.ComponentModel.DataAnnotations;
 
 namespace HakuSite.Models
 {
@@ -12,6 +13,8 @@ namespace HakuSite.Models
         public string name { get; set; }
         public string phone { get; set; }
         public string mobile { get; set; }
+
+        [Display(Name ="部门")]
         public string org { get; set; }
 
 
