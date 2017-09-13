@@ -14,15 +14,19 @@ namespace HakuSite.Models
         public string phone { get; set; }
         public string mobile { get; set; }
 
-        [Display(Name ="部门")]
+        [Display(Name = "部门")]
         public string org { get; set; }
+
+        public string office { get; set; }
+
+        public string encrypt_id { get; set; }
 
 
     }
 
     public class HakuDBContext : DbContext
     {
-        public DbSet<Person> Persons { get; set; } 
+        public DbSet<Person> Persons { get; set; }
     }
 
 

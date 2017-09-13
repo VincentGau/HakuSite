@@ -15,9 +15,31 @@ namespace HakuSite.Controllers
         private HakuDBContext db = new HakuDBContext();
 
         // GET: Persons
-        public ActionResult Index()
+        public ActionResult Index(string org, string searchString)
         {
-            return View(db.Persons.ToList());
+
+            var orgList = new List<string>();
+            var orgQry = from d in db.Persons
+                         orderby d.org
+                         select d.org;
+            orgList.AddRange(orgQry.Distinct());
+            ViewBag.org = new SelectList(orgList);
+
+
+            var persons = from p in db.Persons
+                          select p;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                persons = persons.Where(s => s.name.Contains(searchString));
+
+            }
+
+            if (!String.IsNullOrEmpty(org))
+            {
+                persons = persons.Where(s => s.org == org);
+            }
+            return View(persons);
         }
 
         // GET: Persons/Details/5
@@ -46,7 +68,7 @@ namespace HakuSite.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,name,phone,mobile,org")] Person person)
+        public ActionResult Create([Bind(Include = "ID,name,phone,mobile,org,office,encrypt_id")] Person person)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +100,7 @@ namespace HakuSite.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,name,phone,mobile,org")] Person person)
+        public ActionResult Edit([Bind(Include = "ID,name,phone,mobile,org,office,encrypt_id")] Person person)
         {
             if (ModelState.IsValid)
             {

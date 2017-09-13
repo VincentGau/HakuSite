@@ -8,6 +8,15 @@
 
 <p>
     @Html.ActionLink("Create New", "Create")
+    @using (Html.BeginForm("Index", "Persons", FormMethod.Get))
+    {
+        <p>
+            Name: @Html.TextBox("SearchString") <br />
+            Org:  @Html.DropDownList("org", "All")
+
+            <input type="submit" value="Filter" />
+        </p>
+    }
 </p>
 <table class="table">
     <tr>
@@ -22,6 +31,9 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.org)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.office)
         </th>
         <th></th>
     </tr>
@@ -39,6 +51,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.org)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.office)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
