@@ -23,30 +23,39 @@ namespace HakuSite.Migrations
             //
             //    context.People.AddOrUpdate(
             //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
+            //      new Employee { FullName = "Andrew Peters" },
+            //      new Employee { FullName = "Brice Lambson" },
+            //      new Employee { FullName = "Rowan Miller" }
             //    );
             //
-            context.Persons.AddOrUpdate(i => i.ID,
-                new Person
-                {
-                    name = "haku",
-                    org = "ABC",
-                    phone = "123",
-                },
-                new Person
-                {
-                    name = "chihiro",
-                    org = "ABC",
-                    phone = "987",
-                },
-                new Person
-                {
-                    name = "moe",
-                    org = "ABC",
-                    phone = "456",
-                });
+
+
+            //context.Employees.AddOrUpdate(i => i.ID,
+            //new Employee
+            //{
+            //    Name = "haku",
+            //    Org = "ABC",
+            //    Phone = "123",
+            //},
+            //new Employee
+            //{
+            //    Name = "chihiro",
+            //    Org = "ABC",
+            //    Phone = "987",
+            //},
+            //new Employee
+            //{
+            //    Name = "moe",
+            //    Org = "ABC",
+            //    Phone = "456",
+            //});
+
+            //context.Orgs.AddOrUpdate(i => i.ID,
+            //    new Org
+            //    {
+            //        OrgID = "O-123",
+            //        OrgName = "ORG-123",
+            //    });
 
         }
     }
