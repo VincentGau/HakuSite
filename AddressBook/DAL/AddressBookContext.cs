@@ -17,5 +17,13 @@ namespace AddressBook.DAL
         public DbSet<TmpEmployee> TmpEmployees { get; set; }
         public DbSet<Org> Orgs { get; set; }
         public DbSet<HistoryRecord> HistoryRecords { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Employee>().ToTable("Employee");
+            modelBuilder.Entity<TmpEmployee>().ToTable("TmpEmployee");
+            modelBuilder.Entity<Org>().ToTable("Org");
+            modelBuilder.Entity<HistoryRecord>().ToTable("HistoryRecord");
+        }
     }
 }
